@@ -233,6 +233,46 @@ navLinks.forEach(link => {
 });
 
 // ===========================
+// Mobile Touch Optimization
+// ===========================
+
+// Prevent double tap zoom on buttons and links
+document.addEventListener('touchend', function(e) {
+    // This can help with mobile responsiveness
+}, false);
+
+// Detect if device is mobile/tablet
+function isMobileOrTablet() {
+    const userAgent = window.navigator.userAgent;
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+}
+
+// Optimize for touch devices
+if (isMobileOrTablet()) {
+    document.documentElement.classList.add('touch-device');
+}
+
+// Handle viewport orientation changes
+window.addEventListener('orientationchange', () => {
+    // Adjust layout on orientation change if needed
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 100);
+});
+
+// Improve scroll performance on mobile
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            updateActiveLink();
+            ticking = false;
+        });
+        ticking = true;
+    }
+}, { passive: true });
+
+// ===========================
 // Print Styles Support
 // ===========================
 
