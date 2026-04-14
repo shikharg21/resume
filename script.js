@@ -210,6 +210,83 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ===========================
+// Sticky Sidebar Functionality
+// ===========================
+
+const stickySidebar = document.getElementById('stickySidebar');
+const sidebarLinks = document.querySelectorAll('.sidebar-link');
+const sidebarThemeToggle = document.getElementById('sidebarThemeToggle');
+
+// Show/hide sidebar on scroll
+function handleSidebarScroll() {
+    if (window.pageYOffset > 300) {
+        stickySidebar.classList.add('visible');
+    } else {
+        stickySidebar.classList.remove('visible');
+    }
+}
+
+// Update active sidebar link
+function updateActiveSidebarLink() {
+    const sections = document.querySelectorAll('section');
+    let currentSection = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (window.pageYOffset >= sectionTop - 200) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    sidebarLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-section') === currentSection) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Add sidebar scroll event listener
+window.addEventListener('scroll', () => {
+    handleSidebarScroll();
+    updateActiveSidebarLink();
+}, { passive: true });
+
+// Sidebar theme toggle
+if (sidebarThemeToggle) {
+    sidebarThemeToggle.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+        updateThemeIcon();
+        updateSidebarThemeIcon();
+    });
+}
+
+// Update sidebar theme icon
+function updateSidebarThemeIcon() {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const icon = sidebarThemeToggle.querySelector('i');
+    
+    if (currentTheme === 'dark') {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+}
+
+// Initialize sidebar theme icon
+if (sidebarThemeToggle) {
+    updateSidebarThemeIcon();
+}
+
+// ===========================
 // Initialize
 // ===========================
 
@@ -217,6 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeTheme();
     setInitialActiveLink();
     updateActiveLink();
+    updateActiveSidebarLink();
+    handleSidebarScroll();
     updateYearsOfExperience();
     updateCurrentYear();
 });
