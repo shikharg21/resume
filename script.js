@@ -219,10 +219,13 @@ const sidebarThemeToggle = document.getElementById('sidebarThemeToggle');
 
 // Show/hide sidebar on scroll
 function handleSidebarScroll() {
+    const navbar = document.querySelector('.navbar');
     if (window.pageYOffset > 300) {
         stickySidebar.classList.add('visible');
+        if (navbar) navbar.classList.add('hidden');
     } else {
         stickySidebar.classList.remove('visible');
+        if (navbar) navbar.classList.remove('hidden');
     }
 }
 
