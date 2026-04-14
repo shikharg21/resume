@@ -550,14 +550,14 @@ body.sidebar-visible main {
    =========================== */
 
 .hero {
-    padding: 6rem var(--spacing-md);
+    padding: 4rem var(--spacing-md);
     background: linear-gradient(135deg, var(--surface-color), var(--background-color));
 }
 
 .hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
     align-items: center;
 }
 
@@ -700,13 +700,13 @@ body.sidebar-visible main {
    =========================== */
 
 section {
-    padding: 5rem var(--spacing-md);
+    padding: 3rem var(--spacing-md);
 }
 
 .section-title {
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-bold);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
     text-align: center;
     position: relative;
     padding-bottom: var(--spacing-md);
@@ -786,11 +786,11 @@ section {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
 }
 
 .experience-item {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     background-color: var(--surface-color);
     border-left: 4px solid var(--primary-color);
     border-radius: var(--radius-lg);
@@ -972,7 +972,7 @@ section {
 }
 
 .project-content {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -1085,7 +1085,7 @@ section {
 }
 
 .blog-content {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -1333,7 +1333,7 @@ section {
    =========================== */
 
 .fun-facts-section {
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding: var(--spacing-lg) var(--spacing-md);
     background-color: var(--surface-color);
 }
 
@@ -1341,7 +1341,7 @@ section {
     text-align: center;
     color: var(--text-secondary);
     font-size: var(--font-size-lg);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .fun-facts-wrapper {
@@ -1367,7 +1367,7 @@ section {
 
 .fun-fact-card {
     flex: 0 0 100%;
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     border-left: 4px solid var(--primary-color);
     display: flex;
     flex-direction: column;
@@ -1596,13 +1596,13 @@ section {
 .education-container {
     max-width: 800px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xl);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
 }
 
 .education-item {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     background-color: var(--background-color);
     border-radius: var(--radius-lg);
     box-shadow: 0 4px 12px var(--shadow-color);
@@ -1753,11 +1753,11 @@ section {
     }
 
     section {
-        padding: 4rem var(--spacing-md);
+        padding: 2.5rem var(--spacing-md);
     }
 
     .hero {
-        padding: 5rem var(--spacing-md);
+        padding: 3rem var(--spacing-md);
     }
 }
 
