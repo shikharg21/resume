@@ -1673,7 +1673,7 @@ section {
 }
 
 .contact-info {
-    display: grid;
+    display: inline-flex;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-xl);
