@@ -62,6 +62,49 @@
         </div>
     </section>
 
+    <!-- Fun Facts Carousel Section -->
+    <section id="fun-facts" class="fun-facts-section">
+        <div class="container">
+            <h2 class="section-title">💡 Fun Facts About AI</h2>
+            <p class="fun-facts-subtitle">Discover fascinating insights about Artificial Intelligence</p>
+            
+            <div class="fun-facts-wrapper">
+                <button class="carousel-btn carousel-btn-prev" id="prevFactBtn" aria-label="Previous fact">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="fun-facts-container">
+                    <div id="fun-facts-carousel" class="fun-facts-carousel"></div>
+                </div>
+
+                <button class="carousel-btn carousel-btn-next" id="nextFactBtn" aria-label="Next fact">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="carousel-controls">
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <!-- Indicators will be added by JavaScript -->
+                </div>
+                <label class="auto-rotate-toggle">
+                    <input type="checkbox" id="autoRotateCheckbox" checked>
+                    <span>Auto-rotate</span>
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Fact Modal -->
+    <div id="funFactModal" class="fun-fact-modal">
+        <div class="fun-fact-modal-content">
+            <button class="modal-close" onclick="document.getElementById('funFactModal').style.display = 'none';">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 id="factModalTitle"></h2>
+            <div id="factModalContent"></div>
+        </div>
+    </div>
+
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
@@ -393,49 +436,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Fun Facts Carousel Section -->
-    <section id="fun-facts" class="fun-facts-section">
-        <div class="container">
-            <h2 class="section-title">💡 Fun Facts About AI</h2>
-            <p class="fun-facts-subtitle">Discover fascinating insights about Artificial Intelligence</p>
-            
-            <div class="fun-facts-wrapper">
-                <button class="carousel-btn carousel-btn-prev" id="prevFactBtn" aria-label="Previous fact">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-
-                <div class="fun-facts-container">
-                    <div id="fun-facts-carousel" class="fun-facts-carousel"></div>
-                </div>
-
-                <button class="carousel-btn carousel-btn-next" id="nextFactBtn" aria-label="Next fact">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-
-            <div class="carousel-controls">
-                <div class="carousel-indicators" id="carouselIndicators">
-                    <!-- Indicators will be added by JavaScript -->
-                </div>
-                <label class="auto-rotate-toggle">
-                    <input type="checkbox" id="autoRotateCheckbox" checked>
-                    <span>Auto-rotate</span>
-                </label>
-            </div>
-        </div>
-    </section>
-
-    <!-- Fun Fact Modal -->
-    <div id="funFactModal" class="fun-fact-modal">
-        <div class="fun-fact-modal-content">
-            <button class="modal-close" onclick="document.getElementById('funFactModal').style.display = 'none';">
-                <i class="fas fa-times"></i>
-            </button>
-            <h2 id="factModalTitle"></h2>
-            <div id="factModalContent"></div>
-        </div>
-    </div>
 
     <!-- Fun Section - Easter Egg -->
     <section id="fun" class="fun-section">
