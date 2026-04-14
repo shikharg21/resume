@@ -1,0 +1,3 @@
+# The Attention Mechanism: How AI Actually "Thinks"
+
+The breakthrough behind modern AI (Transformers) is a mechanism called "attention" that lets AI focus on relevant parts of input. It's surprisingly simple yet profoundly effective—similar to how humans focus on important details. Each token in text can attend to every other token, creating billions of relationships that somehow encode language understanding. We still don't fully understand why it works so well!

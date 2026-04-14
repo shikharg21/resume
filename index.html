@@ -394,6 +394,64 @@
         </div>
     </section>
 
+    <!-- Fun Facts Carousel Section -->
+    <section id="fun-facts" class="fun-facts-section">
+        <div class="container">
+            <h2 class="section-title">💡 Fun Facts About AI</h2>
+            <p class="fun-facts-subtitle">Discover fascinating insights about Artificial Intelligence</p>
+            
+            <div class="fun-facts-wrapper">
+                <button class="carousel-btn carousel-btn-prev" id="prevFactBtn" aria-label="Previous fact">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="fun-facts-container">
+                    <div id="fun-facts-carousel" class="fun-facts-carousel"></div>
+                </div>
+
+                <button class="carousel-btn carousel-btn-next" id="nextFactBtn" aria-label="Next fact">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="carousel-controls">
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <!-- Indicators will be added by JavaScript -->
+                </div>
+                <label class="auto-rotate-toggle">
+                    <input type="checkbox" id="autoRotateCheckbox" checked>
+                    <span>Auto-rotate</span>
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Fact Modal -->
+    <div id="funFactModal" class="fun-fact-modal">
+        <div class="fun-fact-modal-content">
+            <button class="modal-close" onclick="document.getElementById('funFactModal').style.display = 'none';">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 id="factModalTitle"></h2>
+            <div id="factModalContent"></div>
+        </div>
+    </div>
+
+    <!-- Fun Section - Easter Egg -->
+    <section id="fun" class="fun-section">
+        <div class="container">
+            <div class="fun-content">
+                <h2 class="fun-title">Got a minute? 🎮</h2>
+                <p class="fun-subtitle">Enjoy a fun game and explore an interactive 404 page</p>
+                <a href="404.html" class="fun-button">
+                    <span class="button-text">Take Me to the Game!</span>
+                    <span class="button-emoji">🎯</span>
+                </a>
+                <p class="fun-hint">💡 Hint: There are secrets hidden inside...</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -402,6 +460,7 @@
     </footer>
 
     <script src="assets/blog/blogs.js"></script>
+    <script src="assets/fun-facts/fun-facts.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

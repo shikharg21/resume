@@ -1,0 +1,3 @@
+# The Turing Test is Already Broken
+
+Alan Turing proposed his famous test in 1950 to determine if a machine could exhibit intelligent behavior. Modern chatbots regularly fool humans into believing they're talking to another person. Yet, many AI researchers argue that passing the Turing test is no longer meaningful—the real challenge is creating AI that's trustworthy, interpretable, and aligned with human values.

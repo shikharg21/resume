@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Shikhar Gupta</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --accent-color: #0080ff;
+            --secondary-color: #ff6b6b;
+            --background-color: #ffffff;
+            --surface-color: #f5f5f5;
+            --text-color: #1a1a1a;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --background-color: #0a0e27;
+            --surface-color: #1a1f3a;
+            --text-color: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-color: #2a2f4a;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --primary-color: #5b9fff;
+            --accent-color: #7ab8ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .container-404 {
+            max-width: 1000px;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+            animation: float 3s ease-in-out infinite;
+            line-height: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .error-messages {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin: 1.5rem 0;
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .error-message {
+            opacity: 0;
+            animation: fadeInOut 3s ease-in-out infinite;
+        }
+
+        .error-message:nth-child(2) { animation-delay: 0.5s; }
+        .error-message:nth-child(3) { animation-delay: 1s; }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            40% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        .game-area {
+            background-color: var(--surface-color);
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .game-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 0.5rem;
+            margin: 2rem 0;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .game-tile {
+            width: 60px;
+            height: 60px;
+            background-color: var(--background-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .game-tile:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .game-tile.revealed {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-color: transparent;
+        }
+
+        .score-display {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+        }
+
+        .score-display strong {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+        }
+
+        .game-instructions {
+            color: var(--text-secondary);
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        .message {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: var(--background-color);
+            color: var(--text-secondary);
+            min-height: 20px;
+            font-weight: 500;
+        }
+
+        .message.success {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: #4caf50;
+            border-left: 4px solid #4caf50;
+        }
+
+        .message.warning {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: #ff9800;
+            border-left: 4px solid #ff9800;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px var(--shadow-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--surface-color);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .easter-egg {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .easter-egg:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .konami-code-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+            z-index: 10000;
+            animation: popIn 0.5s ease;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: fixed;
+            font-size: 2rem;
+            animation: fall 3s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: none;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--surface-color);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 4rem;
+            }
+
+            .error-messages {
+                font-size: 1.3rem;
+            }
+
+            .game-area {
+                padding: 2rem 1rem;
+            }
+
+            .game-tile {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .easter-egg {
+                top: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="easter-egg" id="easterEgg" title="Click me!">
+        🎮
+    </div>
+
+    <div class="container-404">
+        <div class="error-code">404</div>
+        
+        <div class="error-messages">
+            <div class="error-message">Page Not Found</div>
+            <div class="error-message">Lost in the Code?</div>
+            <div class="error-message">404 Adventure Awaits!</div>
+        </div>
+
+        <div class="game-area">
+            <div class="game-title">🎮 Find Your Way Back to Home!</div>
+            <p class="game-instructions">Match the pairs to unlock the portal back home!</p>
+            
+            <div class="game-container" id="gameContainer"></div>
+            
+            <div class="score-display">
+                Score: <strong id="score">0</strong> / <strong id="totalPairs">8</strong>
+            </div>
+            
+            <div class="message" id="message"></div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">🏠 Back to Home</a>
+                <button class="btn btn-secondary" id="resetBtn">🔄 Reset Game</button>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
+            <p>💡 Hint: Try the arrow keys or click the 🎮 icon for secrets!</p>
+        </div>
+    </div>
+
+    <div class="particles" id="particlesContainer"></div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        const THEME_STORAGE_KEY = 'theme-preference';
+
+        function initializeTheme() {
+            const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (storedTheme) {
+                htmlElement.setAttribute('data-theme', storedTheme);
+            } else {
+                const theme = prefersDark ? 'dark' : 'light';
+                htmlElement.setAttribute('data-theme', theme);
+            }
+            
+            updateThemeIcon();
+        }
+
+        function updateThemeIcon() {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const icon = themeToggle.querySelector('i');
+            
+            if (currentTheme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+            updateThemeIcon();
+        });
+
+        // Memory Game
+        const emojis = ['🚀', '⭐', '💻', '🎯', '🎨', '🔥', '💡', '🎭'];
+        let gameCards = [];
+        let flipped = [];
+        let matched = 0;
+        let score = 0;
+
+        function initializeGame() {
+            const gameContainer = document.getElementById('gameContainer');
+            gameContainer.innerHTML = '';
+            
+            gameCards = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
+            flipped = [];
+            matched = 0;
+            score = 0;
+            updateScore();
+            
+            gameCards.forEach((emoji, index) => {
+                const tile = document.createElement('div');
+                tile.className = 'game-tile';
+                tile.textContent = '?';
+                tile.dataset.emoji = emoji;
+                tile.dataset.index = index;
+                
+                tile.addEventListener('click', () => flipCard(tile));
+                gameContainer.appendChild(tile);
+            });
+        }
+
+        function flipCard(tile) {
+            if (flipped.length < 2 && !tile.classList.contains('revealed')) {
+                tile.textContent = tile.dataset.emoji;
+                tile.classList.add('revealed');
+                flipped.push(tile);
+                
+                if (flipped.length === 2) {
+                    checkMatch();
+                }
+            }
+        }
+
+        function checkMatch() {
+            const [card1, card2] = flipped;
+            const isMatch = card1.dataset.emoji === card2.dataset.emoji;
+            
+            if (isMatch) {
+                score++;
+                matched += 2;
+                updateScore();
+                flipped = [];
+                
+                if (matched === gameCards.length) {
+                    celebrateWin();
+                }
+            } else {
+                setTimeout(() => {
+                    card1.textContent = '?';
+                    card2.textContent = '?';
+                    card1.classList.remove('revealed');
+                    card2.classList.remove('revealed');
+                    flipped = [];
+                }, 800);
+            }
+        }
+
+        function updateScore() {
+            document.getElementById('score').textContent = score;
+        }
+
+        function celebrateWin() {
+            const messageEl = document.getElementById('message');
+            messageEl.className = 'message success';
+            messageEl.textContent = '🎉 You Found the Portal! The way home is open!';
+            
+            // Create particles
+            for (let i = 0; i < 30; i++) {
+                createParticle();
+            }
+        }
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const emojis = ['🎉', '⭐', '✨', '🎊', '🚀'];
+            particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = '0';
+            
+            document.getElementById('particlesContainer').appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 3000);
+        }
+
+        // Reset button
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            document.getElementById('message').innerHTML = '';
+            initializeGame();
+        });
+
+        // Easter Egg - Konami Code
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    triggerKonamiCode();
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        function triggerKonamiCode() {
+            const message = document.createElement('div');
+            message.className = 'konami-code-message';
+            message.innerHTML = '🎮 You found the SECRET! 🎮<br><br>You are AWESOME!';
+            document.body.appendChild(message);
+            
+            for (let i = 0; i < 50; i++) {
+                createParticle();
+            }
+            
+            setTimeout(() => message.remove(), 3000);
+        }
+
+        // Easter Egg Click
+        document.getElementById('easterEgg').addEventListener('click', () => {
+            triggerKonamiCode();
+        });
+
+        // Initialize
+        initializeTheme();
+        initializeGame();
+    </script>
+</body>
+</html>

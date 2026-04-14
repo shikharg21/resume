@@ -1,0 +1,3 @@
+# The Emergence Phenomenon: Unexpected Intelligence
+
+AI models sometimes develop unexpected capabilities that weren't explicitly trained for, called "emergent behaviors." A language model trained only to predict the next word suddenly becomes capable of solving math problems, writing code, and explaining complex concepts. Scientists are still puzzled about why these abilities emerge unexpectedly during scaling!

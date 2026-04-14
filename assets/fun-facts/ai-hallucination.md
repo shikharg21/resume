@@ -1,0 +1,3 @@
+# The Hallucination Problem: AI Confidence Gone Wrong
+
+Modern AI systems can confidently generate completely false information, a phenomenon called "hallucination." A language model might cite fake research papers, invent historical events, or describe non-existent technologies with absolute certainty. The more confident the AI sounds, the more convincing the lie becomes—making hallucinations a serious challenge in real-world deployments.
